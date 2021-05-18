@@ -7,7 +7,6 @@ int main() {
     time_t t;
     srand((unsigned)time(&t));
     vector<Studentas>* studentas = new vector<Studentas>;
-
         for (int i = 1000; i <= 10000000; i = i * 10) {
             cout << "pradedamas darbas su " << i << " dydzio failu." << endl;
             workWithGeneratedFile(i);

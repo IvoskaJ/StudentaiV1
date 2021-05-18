@@ -5,10 +5,34 @@
 
 using namespace std;
 
-class Studentas {
+class Zmogus{
+    protected:
+		Zmogus() {};
+    private:
+        string vardas_;
+        string pavarde_;
+    public:
+        string setVardas(string newVardas) {
+            this->vardas_ = newVardas;
+            return vardas_;
+        }
+
+        string setPavarde(string newPavarde) {
+            this->pavarde_ = newPavarde;
+            return this->vardas_;
+        }
+
+        inline string vardas() const { return vardas_; }
+
+        inline string pavarde() const { return pavarde_; }
+
+       virtual ~Zmogus(){};
+
+};
+
+
+class Studentas : public Zmogus {
 	private:
-		string vardas_;
-		string pavarde_;
 		int egzaminas_;
 		double galBalas_;
 		int mediana_;
@@ -61,19 +85,10 @@ class Studentas {
 		return mediana_;
 	}
 
-	string setVardas(string newVardas) {
-		this->vardas_ = newVardas;
-		return vardas_;
-	}
 
 	int setEgzaminas(int newEgz) {
         this->egzaminas_ = newEgz;
         return this->egzaminas_;
-	}
-
-	string setPavarde(string newPavarde) {
-		this->pavarde_ = newPavarde;
-		return this->vardas_;
 	}
 
 	vector<double> setND(double pazymys){
@@ -83,9 +98,6 @@ class Studentas {
 
 	inline double galbalas() const { return galBalas_; }
 	inline int median() const { return mediana_; }
-	inline string vardas() const { return vardas_; }    // get'eriai, inline
-	inline string pavarde() const { return pavarde_; }  // get'eriai, inline
-
 	//destruktorius
 
 	~Studentas() {
@@ -96,8 +108,8 @@ class Studentas {
     //copy operatorius
 
 	Studentas(const Studentas &kitas){
-        this->vardas_=kitas.vardas_;
-        this->pavarde_=kitas.pavarde_;
+        setVardas(kitas.vardas());
+        setPavarde(kitas.pavarde());
         this->ND=kitas.ND;
         this->egzaminas_=kitas.egzaminas_;
         this->galBalas_=kitas.galBalas_;
@@ -116,8 +128,8 @@ class Studentas {
                     this->ND.at(i)=kitas.ND.at(i);
                 }
                 this->egzaminas_=kitas.egzaminas_;
-                this->vardas_ =kitas.vardas_;
-                this->pavarde_=kitas.pavarde_;
+                setVardas(kitas.vardas());
+                setPavarde(kitas.pavarde());
                 this->mediana_=kitas.mediana_;
                 this->galBalas_=kitas.galBalas_;
             }
@@ -127,8 +139,8 @@ class Studentas {
                 }
                 this->egzaminas_=kitas.egzaminas_;
                 this->galBalas_=kitas.galBalas_;
-                this->vardas_=kitas.vardas_;
-                this->pavarde_=kitas.pavarde_;
+                setVardas(kitas.vardas());
+                setPavarde(kitas.pavarde());
                 this->mediana_=kitas.mediana_;
 
             }
