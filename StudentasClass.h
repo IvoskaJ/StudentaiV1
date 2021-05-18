@@ -86,4 +86,53 @@ class Studentas {
 	inline string vardas() const { return vardas_; }    // get'eriai, inline
 	inline string pavarde() const { return pavarde_; }  // get'eriai, inline
 
+	//destruktorius
+
+	~Studentas() {
+	    this->ND.clear();
+        this->ND.shrink_to_fit();
+	}
+
+    //copy operatorius
+
+	Studentas(const Studentas &kitas){
+        this->vardas_=kitas.vardas_;
+        this->pavarde_=kitas.pavarde_;
+        this->ND=kitas.ND;
+        this->egzaminas_=kitas.egzaminas_;
+        this->galBalas_=kitas.galBalas_;
+        this->mediana_=kitas.mediana_;
+
+	}
+
+    //copy assignment operatorius
+
+	Studentas& operator=(const Studentas &kitas){
+            if(this == &kitas){
+             return *this;
+            }
+            if(this->ND.size()>= kitas.ND.size()){
+                for(int i=0; i<kitas.ND.size(); i++){
+                    this->ND.at(i)=kitas.ND.at(i);
+                }
+                this->egzaminas_=kitas.egzaminas_;
+                this->vardas_ =kitas.vardas_;
+                this->pavarde_=kitas.pavarde_;
+                this->mediana_=kitas.mediana_;
+                this->galBalas_=kitas.galBalas_;
+            }
+            else{
+                for(int i=0; i<this->ND.size(); i++){
+                    this->ND.at(i)=kitas.ND.at(i);
+                }
+                this->egzaminas_=kitas.egzaminas_;
+                this->galBalas_=kitas.galBalas_;
+                this->vardas_=kitas.vardas_;
+                this->pavarde_=kitas.pavarde_;
+                this->mediana_=kitas.mediana_;
+
+            }
+
+	}
+
 };
