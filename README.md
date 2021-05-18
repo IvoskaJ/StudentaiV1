@@ -1,63 +1,43 @@
-# UzduotisSuPazymiais-v0.1-
-Reikalavimai versijai (v1.0)
+    Ankstesnės atliktos užduoties pagrindu susikurti naują repoziciją, t.y., visa git istorija iki v1.0 turi išlikti. Įprastinė procedūra būtų:
+        Nusikopijuoti lokaliai (kompiuteryje) visą antrosios užduoties repoziciją (katalogą);
+        Susikurti naują repoziciją GitHub'e.
+        Pasikeiskite nusikopijuotos repozicijos nuotolinį adresą panaudojant git remote set-url origin komandą terminale:
 
-    Optimizuokite studentų rūšiavimo (dalijimo) į dvi kategorijas ("vargšiukų" ir "kietiakų") realizaciją: t.y. visiems trims konteinerių tipams (vector, list ir deque) išmatuokite programos veikimo spartą priklausomai nuo studentų dalijimo į dvi kategorijas strategijos:
-        1 strategija: Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai). Nesunku pastebėti, kad tokia strategija yra neefektyvi užimamos atminties atžvilgiu (įsitikinkite tuo!), tačiau šiame žingsnyje svarbiausia yra patyrinėti, kaip programos veikimo sparta priklauso nuo konteinerio tipo?
-        2 strategija: Bendro studentų konteinerio (vector, list ir deque) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "vargšiukų" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik kietiakai. Atminties atveju tai efektyviau, tačiau dažni trynimai gali būti "skausmingi", ypač tam tikro tipo konteineriams.
+    git remote set-url origin https://github.com/USERNAME/NAUJA_REPOZICIJA.git
 
-    P.s. Jeigu Jūsų šiuo metu realizuota strategija nesutampa nė su viena iš šių dviejų aukščiau aprašytų strategijų, turėsite palyginti tris strategijas: Jūsų ir abi aukščiau aprašytas strategijas.
+        Nupushinkite nusikopijuotą repoziciją į GitHub'ą:
 
-    Programos efektyvumas stipriai gali priklausyti ne tik nuo naudojamo konteinerio tipo, tačiau ir nuo naudojamų algoritmų. Susipažinkite su žemiau pateiktais algoritmais:
-        std::find
-        std::find_if
-        std::search
-        std::copy
-        std::remove
-        std::remove_if
-        std::remove_copy
-        std::remove_copy_if
-        std::transform
-        std::partition
-        std::stable_partition
+    git push -u origin master
 
-    ir pabandykite iš jų atsirinkti ir pritaikyti tinkamus algoritmus studentų dalijimo procedūrai paspartinti (optimizuoti) ant vieno fiksuoto konteinerio - vektoriaus. Palyginkite programos veikimo spartą po šių pakeitimų.
+    Realizuokite programą pagal rekomendacijas ir reikalavimus pateiktus aprašė. Manau suprantate, kad parėjus iš struktūros į klasę, reikės atlikti atitinkamus pakeitimus visame kode!
 
-    Galutinėje versijoje v1.0 turi būti pateikta:
-        Tvarkinga github repozicija, kurioje būtų tik Jūsų kurti (source) failai, t.y. jokių naudojamo IDE "šiukšlių".
-        README.md faile aprašyti visi releasai, bei pakomentuoti gauti rezultatai.
-        Parengta naudojimosi instrukcija, t.y. pagrindiniai žingsniai aprašyti tame pačiame README.md faile.
-        Parengta įdiegimo instrukcija, t.y. paruoštas make Makefile (Unix OS atveju) arba cmake CMakeLists.txt (bet kokios OS atveju).
-        
-        1 strategijoje iš siūlomomi algoritmai nenaudojami.
-        2 strategijoje panaudotas std::copy.
-        
-        Tyrimu rezultatai:
-        Deque:
-        1 strat:
-   ![deque1](https://user-images.githubusercontent.com/78845735/117927486-f19f7d80-b302-11eb-8072-bcd00deaf2dc.png)
+    Palyginkite abiejų Jūsų programų: naudojančios struct iš ankstesniojo darbo ir naudojančio class tipo Studentus iš dabartinės realizacijos spartą (veikimo laiką), naudojant vieną fiksuotą konteinerį, pvz. vektorių, pačią greičiausią dalijimo strategiją ir 100000 ir 1000000 dydžio failus. Gautus rezultatus aprašykite README.md faile.
+
+    Atlikite eksperimentinę analizę priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3 ir papildykite README.md failą gautais rezultatais su optimizavimo flag'ais.
+
+    Padarykite v1.1 releasą pagal ankstesniame darbe aprašytus reikalavimus.
+    
+    tyrimų rezultatai:
+    
+    Vector class su -01 flag'u: 
+   ![vectorClassflag1](https://user-images.githubusercontent.com/78845735/118675265-216aeb80-b803-11eb-96c4-b7d1ccbda3f2.png)
    
-        2 strat:
-   ![deque2](https://user-images.githubusercontent.com/78845735/117927617-1bf13b00-b303-11eb-816c-acdb38db5619.png)
-        
-        1 strategija deque'ui daug greitesnė. Kadangi 2 strategija labai lėtai veikia, screenshot'ai kuriuose būtų dirbama su 100000, 1000000, ir 100000 dydžio failais nekeliami.
+    Vector structure su -O1 flag'u:
+   ![vectorStructFlag1](https://user-images.githubusercontent.com/78845735/118675335-33e52500-b803-11eb-8c95-ed08d8973d64.png)
 
-        
-        Vector:
-        1 strat:
-   ![vector1](https://user-images.githubusercontent.com/78845735/117928205-e436c300-b303-11eb-9abe-6bd22e079000.png)
-        
-        2 strat:
-   ![vector2](https://user-images.githubusercontent.com/78845735/117928239-ef89ee80-b303-11eb-89bb-3df77cf5caef.png)
-        
-        1 strategija vektoriui gavosi žymiai greitesnė nei 2. Vėl gi, dėl veikimo greičio 2 strategijai nekeliami didelių failų screenshot'ai.
-        
-        List:
-        1 strat:
-   ![list1](https://user-images.githubusercontent.com/78845735/117928561-6921dc80-b304-11eb-9570-1f34d891b12b.png)
+    Vector class su -O2 flag'u
+   ![vectorClassflag2](https://user-images.githubusercontent.com/78845735/118675565-5b3bf200-b803-11eb-8060-328be77aa986.png)
+
+    
+    Vector structure su -O2 flag'u
+   ![vectorStructFlag2](https://user-images.githubusercontent.com/78845735/118675552-58410180-b803-11eb-86c2-fc1a5a2e00c3.png)
    
-        2 strat:
-   ![list2](https://user-images.githubusercontent.com/78845735/117928589-7343db00-b304-11eb-939c-7f3f515201fe.png)
-        
-        2 strategija list'ui gavosi šiek tiek greitesnė.
+    Vector class su -O3 flag'u
+   ![vectorClassflag3](https://user-images.githubusercontent.com/78845735/118675625-68f17780-b803-11eb-8de1-800d1c6b8b89.png)
+   
+    Vector structure su -O3 flag'u
+   ![vectorStructFlag3](https://user-images.githubusercontent.com/78845735/118675672-71e24900-b803-11eb-9795-ed96508ce634.png)
+    
+    Tyrimuose galima matyti, kad studentai class greičiausiai veikė su -O3 flag'u, o struktura su -O1 flag'u
 
 
